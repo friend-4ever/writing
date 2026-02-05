@@ -3,252 +3,238 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Class 11 & 12 English Practice</title>
+    <title>Handwriting Practice Sheet</title>
+    <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;700&family=Kalam:wght@300;400&display=swap" rel="stylesheet">
+    
     <style>
-        /* Mobile & iPhone Optimization */
-        body {
-            background-color: #000000; /* Deep Black Background */
-            color: #e0e0e0; /* Off-white text for less eye strain */
-            font-family: 'Georgia', serif; /* Best for handwriting reference */
+        /* A4 Page Setup */
+        @page {
+            size: A4;
             margin: 0;
-            padding: 15px;
-            line-height: 1.6;
-            -webkit-font-smoothing: antialiased;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #ffffff;
+            color: #9e9e9e; /* Light Gray for Tracing */
+            /* Handwriting Font Family */
+            font-family: 'Kalam', 'Caveat', cursive; 
+            font-size: 20px; /* Bada size taaki likhne me aasani ho */
+            line-height: 30px; /* Matches the background lines */
+            -webkit-print-color-adjust: exact;
+        }
+
+        .page-container {
+            width: 210mm;
+            min-height: 297mm;
+            margin: auto;
+            background-color: white;
+            position: relative;
+            padding: 40px 20mm;
+            box-sizing: border-box;
+            
+            /* Notebook Paper Lines Effect */
+            background-image: 
+                linear-gradient(#999 1px, transparent 1px), /* Margin Line */
+                repeating-linear-gradient(transparent, transparent 29px, #afe0ff 30px); /* Blue Lines */
+            background-size: 100% 100%, 100% 30px;
+            background-attachment: local;
+        }
+
+        /* Red Margin Line on the Left */
+        .page-container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 20mm;
+            width: 2px;
+            background-color: #ffaacc; /* Red margin line */
+            border-right: 1px solid #ffaacc;
+            z-index: 1;
+        }
+
+        .content-wrapper {
+            position: relative;
+            z-index: 2;
+            padding-left: 10px; /* Slight offset from red line */
         }
 
         .header {
             text-align: center;
-            margin-bottom: 30px;
+            margin-bottom: 25px;
+            border-bottom: 2px solid #9e9e9e;
             padding-bottom: 10px;
-            border-bottom: 1px solid #333;
         }
 
         .header h1 {
-            font-size: 24px;
-            color: #ffffff;
+            font-family: 'Caveat', cursive;
+            font-size: 36px;
+            color: #b0b0b0; /* Light gray for tracing */
             margin: 0;
+            font-weight: bold;
         }
 
         .header p {
-            color: #888;
-            font-size: 14px;
+            color: #b0b0b0;
+            font-size: 18px;
             margin-top: 5px;
         }
 
         .qa-card {
-            background-color: #121212; /* Slightly lighter black for cards */
-            margin-bottom: 25px;
-            padding: 20px;
-            border-radius: 12px;
-            border: 1px solid #333;
+            margin-bottom: 30px; /* Space between questions */
+            break-inside: avoid; /* Prevents cutting questions in half while printing */
         }
 
         .q-num {
-            font-size: 14px;
-            color: #FF9500; /* Orange accent for numbers */
+            font-size: 18px;
+            color: #b0b0b0; 
             font-weight: bold;
-            text-transform: uppercase;
-            margin-bottom: 5px;
+            text-decoration: underline;
+            margin-bottom: 0px;
         }
 
         .question {
-            font-size: 18px;
+            font-size: 22px;
             font-weight: bold;
-            color: #ffffff;
-            margin-bottom: 15px;
+            color: #888888; /* Slightly darker gray for Question to differentiate */
+            margin-bottom: 5px;
+            display: block;
         }
 
         .answer {
-            font-size: 16px;
-            color: #cccccc;
-            text-align: justify;
-            white-space: pre-line; /* Preserves paragraph breaks */
+            font-size: 20px;
+            color: #d1d1d1; /* Very Light Gray - Perfect for tracing over */
+            text-align: left;
+            white-space: pre-wrap; 
+            letter-spacing: 1px; /* Thoda gap taaki likhne me saaf dikhe */
         }
 
+        /* Tags styles (simplified for paper look) */
         .type-tag {
-            display: inline-block;
-            padding: 2px 8px;
-            font-size: 10px;
-            border-radius: 4px;
+            font-size: 14px;
+            border: 1px solid #ccc;
+            padding: 0 5px;
+            border-radius: 10px;
             margin-left: 10px;
             vertical-align: middle;
         }
 
-        .short-tag { background-color: #1c4c96; color: white; }
-        .long-tag { background-color: #7d1c96; color: white; }
-
+        @media print {
+            body {
+                background: white;
+            }
+            .page-container {
+                width: 100%;
+                margin: 0;
+                box-shadow: none;
+                /* Force background graphics to print */
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+            }
+        }
     </style>
 </head>
 <body>
 
-    <div class="header">
-        <h1>Handwriting Practice</h1>
-        <p>Class 11 & 12 • Important Exam Questions</p>
+    <div class="page-container">
+        <div class="content-wrapper">
+            <div class="header">
+                <h1>English Assignment</h1>
+                <p>Class 11 & 12 • Practice Sheet</p>
+            </div>
+
+            <div id="content-area">
+                </div>
+        </div>
     </div>
 
-    <div id="content-area">
-        </div>
-
     <script>
-        // Real Exam Questions Database (Class 11 & 12 - Core English)
         const database = [
             // CLASS 12 - FLAMINGO & VISTAS
             {
                 type: "Short",
-                q: "Why did M. Hamel blame himself for Franz's inability to answer?",
-                a: "M. Hamel blamed himself because he often sent Franz to water his flowers instead of learning his lessons. He also gave the students a holiday whenever he wanted to go fishing, thus neglecting their education."
+                q: "Q: Why did M. Hamel blame himself?",
+                a: "A: M. Hamel blamed himself because he often sent Franz to water his flowers instead of learning lessons. He also gave holidays when he wanted to go fishing."
             },
             {
                 type: "Long",
-                q: "Describe the character of the Tiger King (The Maharaja of Pratibandapuram).",
-                a: "The Maharaja of Pratibandapuram is a character of satire. He is portrayed as whimsical, stubborn, and arrogant. Obsessed with the prophecy that a tiger would cause his death, he sets out on a hunting spree to kill a hundred tigers, ignoring his duties as a ruler.\n\nHe is brave and skilled but uses his power solely for personal safety. He bans tiger hunting in his state for everyone else and even risks his kingdom by refusing a British officer. His death, caused by a wooden toy tiger, serves as a poetic justice, highlighting the irony that despite killing 99 tigers, he couldn't escape fate."
+                q: "Q: Describe the Tiger King's character.",
+                a: "A: The Maharaja is whimsical and arrogant. Obsessed with the prophecy, he kills 99 tigers, ignoring his duties. His death by a wooden toy is poetic justice."
             },
             {
                 type: "Short",
-                q: "What is the 'misadventure' that William Douglas speaks about?",
-                a: "The misadventure refers to the incident at the YMCA pool when Douglas was ten or eleven years old. A big bruiser of a boy picked him up and threw him into the deep end, where he nearly drowned and developed a lifelong fear of water."
+                q: "Q: What is the 'misadventure' Douglas speaks of?",
+                a: "A: It refers to the incident at the YMCA pool where a big boy threw him into the deep end, causing him to nearly drown and fear water forever."
             },
             {
                 type: "Long",
-                q: "How does the poem 'My Mother at Sixty-six' bring out the contrast between the world inside and outside the car?",
-                a: "The poet uses contrasting imagery to highlight her emotional state. Inside the car, the atmosphere is heavy with the realization of age and mortality. The mother creates an image of decay, dozing open-mouthed with an 'ashen' face, resembling a corpse.\n\nIn sharp contrast, the world outside is full of life and energy. The 'young trees sprinting' symbolize time passing quickly, and the 'merry children spilling out' represent youth and vitality. This contrast intensifies the poet's pain and fear of losing her mother."
+                q: "Q: Contrast in 'My Mother at Sixty-six'.",
+                a: "A: Inside the car, the mother looks like a corpse (decay). Outside, young trees sprinting and merry children symbolize life, energy, and vitality."
             },
             {
                 type: "Short",
-                q: "Why was the crofter so talkative and friendly with the peddler?",
-                a: "The crofter was an old man without a wife or children. He suffered from acute loneliness. He was happy to have someone to talk to in his loneliness, which is why he was so talkative and hospitable to the peddler."
+                q: "Q: Why was the crofter so friendly?",
+                a: "A: The crofter was lonely without a wife or children. He was happy to have someone to talk to, so he was generous to the peddler."
             },
             {
                 type: "Long",
-                q: "Comment on the ending of the story 'The Enemy'. Was Dr. Sadao right in letting the American soldier escape?",
-                a: "The ending of 'The Enemy' resolves the conflict between Dr. Sadao's duty as a doctor and his duty as a patriot. By helping the American soldier escape, Sadao upholds the supreme humanitarian obligation of saving a life, which transcends national boundaries.\n\nWhile he could be seen as a traitor to his country during wartime, his actions were driven by professional ethics. He had saved the man's life medically, and handing him over to be killed would have rendered his medical efforts futile. Thus, his decision creates a balance between his medical oath and his personal morality."
+                q: "Q: Was Dr. Sadao right in 'The Enemy'?",
+                a: "A: Yes. He upheld his medical oath to save a life. By letting the soldier escape later, he balanced his professional duty with his patriotism."
             },
             {
                 type: "Short",
-                q: "What does the 'Third Level' symbolize?",
-                a: "The Third Level symbolizes a medium of escape for Charley from the harsh realities of modern life, which is full of insecurity, fear, war, and worry. It represents a psychological refuge in the peaceful past of the 1890s."
+                q: "Q: What does the 'Third Level' symbolize?",
+                a: "A: It symbolizes an escape for Charley from the harsh realities of the modern world (war, worry) to the peaceful past of the 1890s."
             },
             {
                 type: "Short",
-                q: "Why did the grandmother hate music? (The Portrait of a Lady)",
-                a: "The grandmother considered music to be the monopoly of harlots and beggars. For her, it was not meant for gentlefolk. She felt disturbed when she learned that her grandson was being given music lessons at school."
+                q: "Q: Why did the grandmother hate music?",
+                a: "A: She believed music was for harlots and beggars, not for gentlefolk. She was distressed that it was taught at school."
             },
             {
                 type: "Long",
-                q: "Justify the title 'Lost Spring'.",
-                a: "'Spring' is the season of renewal, hope, and blooming, metaphorically representing childhood. Childhood is the phase of life where one should enjoy freedom, education, and play.\n\nHowever, for children like Saheb-e-Alam and Mukesh, this season of joy is lost to the grinding poverty and labor they are born into. Saheb picks rags, and Mukesh works near hot furnaces. They are forced to take on adult responsibilities prematurely. Thus, the title 'Lost Spring' aptly describes the stolen childhood of millions of poor Indian children."
+                q: "Q: Justify the title 'Lost Spring'.",
+                a: "A: Spring represents childhood happiness. For children like Saheb and Mukesh, forced into labor, this 'spring' is lost to poverty and crushing responsibilities."
             },
             {
                 type: "Short",
-                q: "What was the significance of the bulletin board in 'The Last Lesson'?",
-                a: "For the last two years, all the bad news had come from the bulletin board—the lost battles, the draft, and the orders of the commanding officer. It was the source of all gloom for the people of Alsace."
+                q: "Q: Significance of the bulletin board?",
+                a: "A: It was the source of all bad news—lost battles and drafts. A crowd there meant something bad had happened again in Alsace."
             },
-            {
-                type: "Long",
-                q: "Describe the boat 'Wavewalker' and the preparations made by the narrator for the voyage (We're Not Afraid to Die).",
-                a: "The 'Wavewalker' was a 23-meter, 30-ton wooden-hulled beauty, professionally built. The narrator and his wife had spent months fitting it out and testing it in the roughest weather they could find.\n\nFor the voyage, the narrator had honed his seafaring skills for sixteen years. They planned a three-year journey around the world, duplicating the voyage made by Captain James Cook 200 years earlier. They also took two crewmen to help them tackle the rough southern Indian Ocean."
-            },
-            {
-                type: "Short",
-                q: "Why does the poet ask us to 'keep quiet'?",
-                a: "The poet Pablo Neruda asks us to keep quiet to suspend all our activities for a moment. This silence will allow us to introspect, understand ourselves, and stop the mad rush of destruction, leading to a feeling of mutual understanding."
-            },
-            {
-                type: "Short",
-                q: "What did the author find in the junk shop? (The Best Christmas Present in the World)",
-                a: "The author found a roll-top desk made of oak in a junk shop in Bridport. It was in a bad condition, with one leg clumsily mended and scorch marks down one side, but he decided to buy it to restore it."
-            },
-            {
-                type: "Long",
-                q: "How does the story 'The Rat Trap' show that basic human goodness can be brought out by understanding and love?",
-                a: "The story shows that even a cynical man like the peddler, who views the world as a trap, can be transformed. The ironmaster's daughter, Edla, treats him with respect and dignity even after knowing he is a poor tramp. She feeds him and makes him feel welcome.\n\nHer unconditional love and trust melt his hard exterior. He decides to live up to the high status she gave him ('Captain'). He returns the stolen money and leaves a letter of gratitude. This proves that empathy and kindness have the power to reform a person more than punishment or suspicion."
-            },
-            {
-                type: "Short",
-                q: "Why was the grandmother silent when the author left for abroad?",
-                a: "The grandmother was a strong woman who controlled her emotions. She did not cry or show sentimentality. She was busy telling the beads of her rosary and silently praying, kissing the author's forehead as a sign of blessing."
-            },
-            {
-                type: "Long",
-                q: "What were the peculiarities of Uncle Khosrove in 'The Summer of the Beautiful White Horse'?",
-                a: "Uncle Khosrove was considered the 'crazy streak' of the family. He was a huge man with a powerful head of black hair and a very loud voice. He was extremely irritable and impatient.\n\nNo matter what the situation was—even when his own house was on fire—his standard response was, 'It is no harm; pay no attention to it.' His roaring voice often silenced people, making him a comical yet intimidating figure in the story."
-            },
-            {
-                type: "Short",
-                q: "Why did the Champaran peasants fear the British planters?",
-                a: "The peasants were illiterate and poor sharecroppers who were forced to grow indigo. They feared the British planters because the planters had the support of the law and the government, and they could punish or evict the peasants at will."
-            },
-            {
-                type: "Long",
-                q: "Describe the hardship faced by the author in 'Journey to the End of the Earth'. What does the title signify?",
-                a: "The author, Tishani Doshi, traveled to Antarctica aboard a Russian research vessel, the 'Akademik Shokalskiy'. The journey involved crossing nine time zones, six checkpoints, three bodies of water, and at least as many ecospheres.\n\nThe title signifies a journey to the coldest, driest, and windiest continent in the world, which is physically located at the 'end' of the earth (the South Pole). Metaphorically, it also refers to a place that holds the secrets of the earth's past, present, and future, warning us about the end of the earth if global warming continues."
-            },
-            {
-                type: "Short",
-                q: "What is the 'sadness' that the poet refers to in the poem 'Keeping Quiet'?",
-                a: "The sadness refers to the tragedy of human beings who never understand themselves. In their mad rush to achieve things, they threaten themselves with death and destruction, never pausing to appreciate life."
-            },
-            {
-                type: "Long",
-                q: "Analyze the central theme of 'A Thing of Beauty' by John Keats.",
-                a: "The central theme is that beauty is a constant source of joy and healing. A beautiful thing—whether it is nature, a story, or a noble deed—never passes into nothingness. Its loveliness increases with time.\n\nKeats suggests that life is full of trials, gloom, and unhealthy ways. In such a world, beautiful things act as a 'bower' or a shady place that gives us peace and sleep. They remove the pall of despondence from our dark spirits and bind us to the earth, giving us a reason to live."
-            },
-            {
-                type: "Short",
-                q: "Who was Carter? What did he do to King Tut’s mummy?",
-                a: "Howard Carter was the British archaeologist who discovered King Tut’s tomb in 1922. To separate the mummy from the solid gold coffin where the ritual resins had hardened, he had to chisel away the solidified material, damaging the mummy in the process."
-            },
+            // ... (Adding more items to fill page for demo) ...
              {
-                type: "Long",
-                q: "Character sketch of Frank in 'The Browning Version'.",
-                a: "Frank is a young science teacher at the school. Unlike Mr. Crocker-Harris, he is approachable but lacks professional ethics. He is envious of the hold Crocker-Harris has over the students, despite the latter being strict and not a sadist.\n\nFrank encourages Taplow to speak against his teacher and even mocks the classic literature (Aeschylus) he teaches. He represents the modern, perhaps more lax, teacher who tries to be friendly with students but fails to command the deep respect that a disciplinarian like Crocker-Harris commands."
-            },
-            {
                 type: "Short",
-                q: "Why did the author's grandmother feed the sparrows?",
-                a: "In the city, there were no stray dogs to feed, so the grandmother took to feeding sparrows. It was her way of connecting with nature and practicing charity, which gave her immense happiness."
-            },
-            {
-                type: "Long",
-                q: "How does the story 'The Address' describe the human predicament that follows war?",
-                a: "Marga Minco’s story highlights the emotional trauma of war survivors. The narrator returns to her hometown after the war to claim her mother's belongings from Mrs. Dorling. However, seeing her precious family possessions in a strange, tasteless environment distresses her.\n\nThe objects, which were once connected to a life of love and comfort, now evoke painful memories of her dead mother and the past. She realizes that reclaiming the objects will not bring back the past. The story shows that war not only destroys physical lives but also severs emotional connections, leaving survivors with a sense of displacement."
+                q: "Q: Why keep quiet (Pablo Neruda)?",
+                a: "A: Keeping quiet allows us to introspect, stop destructive activities, and build mutual understanding among human beings."
             }
         ];
 
-        // Function to create the full list of 100
         function loadQuestions() {
             const container = document.getElementById('content-area');
-            let totalNeeded = 100;
+            // Generating enough to fill a page or two
+            let totalNeeded = 12; 
             let currentIndex = 0;
 
             for (let i = 1; i <= totalNeeded; i++) {
-                // Cycle through the database
                 const data = database[currentIndex];
                 
-                // Create Card
                 const card = document.createElement('div');
                 card.className = 'qa-card';
 
-                // Tag Color logic
-                const tagClass = data.type === "Short" ? "short-tag" : "long-tag";
-
                 card.innerHTML = `
-                    <div class="q-num">Question ${i} <span class="type-tag ${tagClass}">${data.type} Answer</span></div>
+                    <div class="q-num">${i}. ${data.type} Answer</div>
                     <div class="question">${data.q}</div>
                     <div class="answer">${data.a}</div>
                 `;
 
                 container.appendChild(card);
-
-                // Increment index and loop back if needed
                 currentIndex++;
-                if (currentIndex >= database.length) {
-                    currentIndex = 0;
-                }
+                if (currentIndex >= database.length) currentIndex = 0;
             }
         }
 
-        // Run immediately
         loadQuestions();
     </script>
 </body>
