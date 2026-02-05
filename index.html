@@ -1,193 +1,255 @@
-यह रहा आपके लिए एक पूरा HTML कोड।
-ध्यान दें: चूंकि 100 अलग-अलग (Unique) सवाल और उनके इतने लंबे जवाब (15-20 पैराग्राफ) एक ही बार में लिखना संभव नहीं है (यह एक पूरी किताब बन जाएगी), इसलिए मैंने इस कोड में Class 11th और 12th English (Core) के 15 सबसे महत्वपूर्ण "Long Answer Questions" डाले हैं।
-यह कोड JavaScript का उपयोग करके इन 15 सवालों को अलग-अलग क्रम में दोहराकर (Loop) पूरी 100 सवालों की लिस्ट बना देगा। इससे आपको प्रैक्टिस के लिए 100 सवालों का एक पूरा सेट मिल जाएगा।
-इसे कैसे इस्तेमाल करें:
- * नीचे दिए गए कोड को Copy करें।
- * Notepad (या TextEdit) खोलें और कोड पेस्ट करें।
- * फाइल को practice_questions.html नाम से Save करें।
- * अब इस फाइल को Chrome या किसी भी ब्राउज़र में खोलें।
-<!-- end list -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>100 English Handwriting Practice Questions</title>
+    <title>Class 11 & 12 English Practice</title>
     <style>
+        /* Mobile & iPhone Optimization */
         body {
-            font-family: 'Times New Roman', Times, serif; /* Good for handwriting reference */
-            background-color: #f4f4f4;
-            color: #333;
-            line-height: 1.6;
+            background-color: #000000; /* Deep Black Background */
+            color: #e0e0e0; /* Off-white text for less eye strain */
+            font-family: 'Georgia', serif; /* Best for handwriting reference */
             margin: 0;
-            padding: 20px;
+            padding: 15px;
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
         }
-        .container {
-            max-width: 900px;
-            margin: 0 auto;
-            background: white;
-            padding: 40px;
-            box-shadow: 0 0 10px rgba(0,0,0,0.1);
-        }
-        h1 {
+
+        .header {
             text-align: center;
-            color: #2c3e50;
-            border-bottom: 2px solid #2c3e50;
-            padding-bottom: 10px;
-        }
-        .intro {
-            text-align: center;
-            font-style: italic;
             margin-bottom: 30px;
-            color: #555;
+            padding-bottom: 10px;
+            border-bottom: 1px solid #333;
         }
-        .qa-block {
-            margin-bottom: 40px;
-            border-bottom: 1px dashed #ccc;
-            padding-bottom: 20px;
+
+        .header h1 {
+            font-size: 24px;
+            color: #ffffff;
+            margin: 0;
         }
-        .question-header {
-            font-size: 1.2rem;
+
+        .header p {
+            color: #888;
+            font-size: 14px;
+            margin-top: 5px;
+        }
+
+        .qa-card {
+            background-color: #121212; /* Slightly lighter black for cards */
+            margin-bottom: 25px;
+            padding: 20px;
+            border-radius: 12px;
+            border: 1px solid #333;
+        }
+
+        .q-num {
+            font-size: 14px;
+            color: #FF9500; /* Orange accent for numbers */
             font-weight: bold;
-            color: #d35400;
-            margin-bottom: 10px;
+            text-transform: uppercase;
+            margin-bottom: 5px;
         }
-        .question-text {
-            font-size: 1.1rem;
+
+        .question {
+            font-size: 18px;
             font-weight: bold;
+            color: #ffffff;
             margin-bottom: 15px;
-            color: #000;
         }
-        .answer-text {
-            font-size: 1rem;
+
+        .answer {
+            font-size: 16px;
+            color: #cccccc;
             text-align: justify;
-            white-space: pre-line; /* Keeps paragraph spacing */
+            white-space: pre-line; /* Preserves paragraph breaks */
         }
-        .print-btn {
-            display: block;
-            width: 200px;
-            margin: 20px auto;
-            padding: 10px;
-            background-color: #2c3e50;
-            color: white;
-            text-align: center;
-            text-decoration: none;
-            font-size: 1.1rem;
-            border-radius: 5px;
-            cursor: pointer;
+
+        .type-tag {
+            display: inline-block;
+            padding: 2px 8px;
+            font-size: 10px;
+            border-radius: 4px;
+            margin-left: 10px;
+            vertical-align: middle;
         }
-        .print-btn:hover {
-            background-color: #34495e;
-        }
-        @media print {
-            .print-btn { display: none; }
-            body { background-color: white; }
-            .container { box-shadow: none; margin: 0; padding: 0; width: 100%; }
-        }
+
+        .short-tag { background-color: #1c4c96; color: white; }
+        .long-tag { background-color: #7d1c96; color: white; }
+
     </style>
 </head>
 <body>
 
-    <div class="container">
-        <h1>English Handwriting Practice</h1>
-        <p class="intro">Collection of 100 Long-Answer Type Questions for Handwriting Improvement.<br>Level: Class 11 & 12 (Advanced)</p>
-        
-        <button class="print-btn" onclick="window.print()">Print / Save as PDF</button>
-
-        <div id="questions-container">
-            </div>
+    <div class="header">
+        <h1>Handwriting Practice</h1>
+        <p>Class 11 & 12 • Important Exam Questions</p>
     </div>
 
+    <div id="content-area">
+        </div>
+
     <script>
-        // Database of High-Quality Long Answer Questions (Class 12 Level)
-        const questionBank = [
+        // Real Exam Questions Database (Class 11 & 12 - Core English)
+        const database = [
+            // CLASS 12 - FLAMINGO & VISTAS
             {
-                q: "Analyze the theme of linguistic chauvinism in 'The Last Lesson' by Alphonse Daudet. How does the story highlight the importance of one's mother tongue?",
-                a: "The story 'The Last Lesson' is set during the Franco-Prussian War, where the French districts of Alsace and Lorraine have fallen into Prussian hands. The order from Berlin to teach only German in the schools serves as a grim reminder of how conquerors not only capture land but also attempt to enslave the minds of the people by taking away their language. This imposition is a classic example of linguistic chauvinism—the aggressive belief that one's language is superior to others.\n\nM. Hamel, the French teacher, becomes the voice of resistance. In his final lesson, he extols the beauty, clarity, and logic of the French language. He tells the villagers that their language is the key to their prison; as long as they hold fast to it, they preserve their identity and freedom. His emotion affects everyone in the room, from the young Franz to the old villagers sitting on the back benches.\n\nFranz, who previously neglected his lessons, suddenly realizes the value of what he is losing. The grammar that seemed difficult now appears easy, and the books that were a burden become like old friends. The story poignantly illustrates that we often take our cultural heritage for granted until it is threatened.\n\nUltimately, the story is not just about the loss of a language but about the resilience of the human spirit. When M. Hamel writes 'Vive La France' on the blackboard, it is an act of defiance. It suggests that while political borders may change, the soul of a nation, embedded in its language, cannot be easily extinguished."
+                type: "Short",
+                q: "Why did M. Hamel blame himself for Franz's inability to answer?",
+                a: "M. Hamel blamed himself because he often sent Franz to water his flowers instead of learning his lessons. He also gave the students a holiday whenever he wanted to go fishing, thus neglecting their education."
             },
             {
-                q: "Describe the miserable condition of the ragpickers in Seemapuri as depicted in 'Lost Spring'. How does Anees Jung contrast their reality with their dreams?",
-                a: "In 'Lost Spring', Anees Jung paints a bleak picture of Seemapuri, a settlement on the outskirts of Delhi. It is inhabited by over 10,000 ragpickers who live in mud structures with roofs of tin and tarpaulin, devoid of sewage, drainage, or running water. For these people, survival means ragpicking. Garbage is 'gold' to them; it is their daily bread and a roof over their heads.\n\nThe author highlights the plight of children like Saheb-e-Alam, whose name ironically means 'Lord of the Universe', yet who scrounges through garbage dumps barefoot. These children grow up before they can truly enjoy childhood, becoming partners in survival with their parents. The perpetual state of poverty is accepted as a tradition rather than a circumstance, trapping them in a vicious cycle.\n\nJung contrasts this reality with the faint glimmer of dreams. Saheb watches a tennis match with longing, and finding a discarded pair of shoes is like a dream come true for him. Similarly, Mukesh, a bangle maker from Firozabad (another part of the story), dreams of being a motor mechanic, daring to break the lineage of his family's trade. However, the crushing weight of poverty, the apathy of society, and the exploitation by middlemen often strangle these dreams before they can take flight.\n\nThe story serves as a critique of a society that allows such destitution to exist in the shadows of a developing capital. It questions the value of development when it leaves behind thousands of children who are denied education, health, and a dignified life."
+                type: "Long",
+                q: "Describe the character of the Tiger King (The Maharaja of Pratibandapuram).",
+                a: "The Maharaja of Pratibandapuram is a character of satire. He is portrayed as whimsical, stubborn, and arrogant. Obsessed with the prophecy that a tiger would cause his death, he sets out on a hunting spree to kill a hundred tigers, ignoring his duties as a ruler.\n\nHe is brave and skilled but uses his power solely for personal safety. He bans tiger hunting in his state for everyone else and even risks his kingdom by refusing a British officer. His death, caused by a wooden toy tiger, serves as a poetic justice, highlighting the irony that despite killing 99 tigers, he couldn't escape fate."
             },
             {
-                q: "How does the metaphor of the 'Rattrap' serve to highlight the human predicament in Selma Lagerlof’s story? Discuss the character transformation of the peddler.",
-                a: "Selma Lagerlof’s 'The Rattrap' uses the metaphor of a rattrap to explain the human condition. The protagonist, a vagabond peddler, views the whole world as a giant rattrap. He believes that the riches, joys, shelter, and food the world offers are merely baits, just like cheese or pork in a rattrap. Once a person is tempted by these baits, the trap closes, and everything comes to an end.\n\nThis cynical philosophy acts as a shield for the peddler against his own miserable life. However, he falls into a trap himself when he steals thirty kronor from a hospitable crofter. Lost in the woods, fearing detection, he realizes he has taken the bait and is now trapped in the forest which seems like a prison.\n\nThe peddler's transformation occurs through the unconditional kindness of Edla Willmansson. Unlike her father, the Ironmaster, who mistakes the peddler for an old friend, Edla treats him with dignity even after knowing he is a poor tramp. She feeds him, gives him clothes, and treats him like a Captain. This trust and compassion break through the peddler's cynicism.\n\nIn the end, the peddler redeems himself by returning the stolen money and leaving a letter for Edla. He signs it as 'Captain von Stahle', signifying that he has been raised to the level of a gentleman by her noble behavior. The story concludes that essential human goodness can be awakened through understanding and love, allowing one to escape the 'rattraps' of the world."
+                type: "Short",
+                q: "What is the 'misadventure' that William Douglas speaks about?",
+                a: "The misadventure refers to the incident at the YMCA pool when Douglas was ten or eleven years old. A big bruiser of a boy picked him up and threw him into the deep end, where he nearly drowned and developed a lifelong fear of water."
             },
             {
-                q: "In 'Deep Water', how did William Douglas overcome his fear of water? What lesson about fear and courage does the narrative convey?",
-                a: "William Douglas’s story 'Deep Water' is an autobiographical account of his struggle to overcome a debilitating phobia of water. His fear stemmed from two traumatic incidents: being knocked down by waves at a beach in California as a child, and later, being thrown into the deep end of a YMCA pool by a bully, where he nearly drowned.\n\nThis fear stayed with him for years, ruining his fishing trips and depriving him of the joy of swimming. However, Douglas refused to be defeated. He hired an instructor who taught him to swim step by step—how to exhale underwater, how to kick, and how to use his arms. The instructor 'built a swimmer' out of him over several months.\n\nYet, the residual fear remained. To conquer it completely, Douglas went to Lake Wentworth and Warm Lake. He swam across vast distances, and whenever the fear returned, he confronted it directly, asking, 'What can you do to me?' This act of facing the terror head-on made it vanish.\n\nThe narrative conveys a powerful lesson derived from President Roosevelt’s words: 'All we have to fear is fear itself.' Douglas realized that the actual experience of death (drowning) was peaceful; it was the fear of dying that was terrorizing. His journey proves that with determination, persistence, and courage, we can overcome the psychological barriers that hold us back. It is a story of the triumph of the human will."
+                type: "Long",
+                q: "How does the poem 'My Mother at Sixty-six' bring out the contrast between the world inside and outside the car?",
+                a: "The poet uses contrasting imagery to highlight her emotional state. Inside the car, the atmosphere is heavy with the realization of age and mortality. The mother creates an image of decay, dozing open-mouthed with an 'ashen' face, resembling a corpse.\n\nIn sharp contrast, the world outside is full of life and energy. The 'young trees sprinting' symbolize time passing quickly, and the 'merry children spilling out' represent youth and vitality. This contrast intensifies the poet's pain and fear of losing her mother."
             },
             {
-                q: "Discuss the satire and humor used in 'Poets and Pancakes' to depict the workings of the Gemini Studios.",
-                a: "Asokamitran’s 'Poets and Pancakes' is a humorous and satirical account of his time at Gemini Studios in Chennai. The title itself is derived from the brand name of the make-up material 'Pancake' that was bought in truckloads at the studio. The author uses subtle humor to describe the make-up department, which he jokingly calls a 'hair-cutting salon' due to the intense lights and mirrors that subjected actors to 'fiery misery'.\n\nThe hierarchy in the make-up department is described with wit: the chief make-up man attended to the chief actors, his senior assistant to the 'second hero', and so on, down to the office boy who painted the crowd players. The author satirizes the purpose of make-up, stating that the team seemed determined to turn decent-looking people into hideous monsters to make them look presentable on screen.\n\nThe character of Subbu is another source of analysis. He is described as a 'No. 2' at the studio, a man who is tailor-made for films, always ready with a solution for any scene. The author also pokes fun at the incongruity of English poets like Stephen Spender visiting a Tamil film studio, highlighting the cultural gap and the confusion it caused among the simple studio staff.\n\nThrough these anecdotes, Asokamitran exposes the eccentricities, the sycophancy, and the chaotic yet creative atmosphere of the film industry in its early days. The humor is never malicious but rather observational, providing a candid look at the human foibles behind the glamour of cinema."
+                type: "Short",
+                q: "Why was the crofter so talkative and friendly with the peddler?",
+                a: "The crofter was an old man without a wife or children. He suffered from acute loneliness. He was happy to have someone to talk to in his loneliness, which is why he was so talkative and hospitable to the peddler."
             },
             {
-                q: "In 'Indigo', how did Mahatma Gandhi's leadership style in Champaran reflect his philosophy of Satyagraha and self-reliance?",
-                a: "The 'Indigo' chapter describes Gandhi's first major civil disobedience movement in India, which took place in Champaran. The sharecroppers there were forced to grow indigo on 15% of their land and surrender the entire harvest as rent to British planters. Gandhi's leadership in resolving this issue was a practical application of his philosophy.\n\nFirstly, Gandhi focused on truth and facts. He did not jump into agitation but spent time gathering evidence and meeting with officials, despite being bullied and ordered to leave. When he was summoned to court, he did not resort to violence but used the power of the masses. The thousands of peasants who gathered outside the courthouse demonstrated a power that the British could not control without Gandhi's help.\n\nGandhi's approach was also deeply rooted in self-reliance. He refused to let Charles Freer Andrews, an English pacifist, stay and help them, stating that relying on an Englishman would show the weakness of their heart. He wanted the Indians to win the battle on their own strength.\n\nFurthermore, Gandhi's concern went beyond political victory. He saw the cultural and social backwardness of Champaran and opened schools and improved sanitation. He taught the people that real freedom includes freedom from fear and social ills. Thus, the Champaran episode was not just a struggle for peasants' rights but a lesson in self-reliance and the power of non-violent resistance (Satyagraha)."
+                type: "Long",
+                q: "Comment on the ending of the story 'The Enemy'. Was Dr. Sadao right in letting the American soldier escape?",
+                a: "The ending of 'The Enemy' resolves the conflict between Dr. Sadao's duty as a doctor and his duty as a patriot. By helping the American soldier escape, Sadao upholds the supreme humanitarian obligation of saving a life, which transcends national boundaries.\n\nWhile he could be seen as a traitor to his country during wartime, his actions were driven by professional ethics. He had saved the man's life medically, and handing him over to be killed would have rendered his medical efforts futile. Thus, his decision creates a balance between his medical oath and his personal morality."
+            },
+            {
+                type: "Short",
+                q: "What does the 'Third Level' symbolize?",
+                a: "The Third Level symbolizes a medium of escape for Charley from the harsh realities of modern life, which is full of insecurity, fear, war, and worry. It represents a psychological refuge in the peaceful past of the 1890s."
+            },
+            {
+                type: "Short",
+                q: "Why did the grandmother hate music? (The Portrait of a Lady)",
+                a: "The grandmother considered music to be the monopoly of harlots and beggars. For her, it was not meant for gentlefolk. She felt disturbed when she learned that her grandson was being given music lessons at school."
+            },
+            {
+                type: "Long",
+                q: "Justify the title 'Lost Spring'.",
+                a: "'Spring' is the season of renewal, hope, and blooming, metaphorically representing childhood. Childhood is the phase of life where one should enjoy freedom, education, and play.\n\nHowever, for children like Saheb-e-Alam and Mukesh, this season of joy is lost to the grinding poverty and labor they are born into. Saheb picks rags, and Mukesh works near hot furnaces. They are forced to take on adult responsibilities prematurely. Thus, the title 'Lost Spring' aptly describes the stolen childhood of millions of poor Indian children."
+            },
+            {
+                type: "Short",
+                q: "What was the significance of the bulletin board in 'The Last Lesson'?",
+                a: "For the last two years, all the bad news had come from the bulletin board—the lost battles, the draft, and the orders of the commanding officer. It was the source of all gloom for the people of Alsace."
+            },
+            {
+                type: "Long",
+                q: "Describe the boat 'Wavewalker' and the preparations made by the narrator for the voyage (We're Not Afraid to Die).",
+                a: "The 'Wavewalker' was a 23-meter, 30-ton wooden-hulled beauty, professionally built. The narrator and his wife had spent months fitting it out and testing it in the roughest weather they could find.\n\nFor the voyage, the narrator had honed his seafaring skills for sixteen years. They planned a three-year journey around the world, duplicating the voyage made by Captain James Cook 200 years earlier. They also took two crewmen to help them tackle the rough southern Indian Ocean."
+            },
+            {
+                type: "Short",
+                q: "Why does the poet ask us to 'keep quiet'?",
+                a: "The poet Pablo Neruda asks us to keep quiet to suspend all our activities for a moment. This silence will allow us to introspect, understand ourselves, and stop the mad rush of destruction, leading to a feeling of mutual understanding."
+            },
+            {
+                type: "Short",
+                q: "What did the author find in the junk shop? (The Best Christmas Present in the World)",
+                a: "The author found a roll-top desk made of oak in a junk shop in Bridport. It was in a bad condition, with one leg clumsily mended and scorch marks down one side, but he decided to buy it to restore it."
+            },
+            {
+                type: "Long",
+                q: "How does the story 'The Rat Trap' show that basic human goodness can be brought out by understanding and love?",
+                a: "The story shows that even a cynical man like the peddler, who views the world as a trap, can be transformed. The ironmaster's daughter, Edla, treats him with respect and dignity even after knowing he is a poor tramp. She feeds him and makes him feel welcome.\n\nHer unconditional love and trust melt his hard exterior. He decides to live up to the high status she gave him ('Captain'). He returns the stolen money and leaves a letter of gratitude. This proves that empathy and kindness have the power to reform a person more than punishment or suspicion."
+            },
+            {
+                type: "Short",
+                q: "Why was the grandmother silent when the author left for abroad?",
+                a: "The grandmother was a strong woman who controlled her emotions. She did not cry or show sentimentality. She was busy telling the beads of her rosary and silently praying, kissing the author's forehead as a sign of blessing."
+            },
+            {
+                type: "Long",
+                q: "What were the peculiarities of Uncle Khosrove in 'The Summer of the Beautiful White Horse'?",
+                a: "Uncle Khosrove was considered the 'crazy streak' of the family. He was a huge man with a powerful head of black hair and a very loud voice. He was extremely irritable and impatient.\n\nNo matter what the situation was—even when his own house was on fire—his standard response was, 'It is no harm; pay no attention to it.' His roaring voice often silenced people, making him a comical yet intimidating figure in the story."
+            },
+            {
+                type: "Short",
+                q: "Why did the Champaran peasants fear the British planters?",
+                a: "The peasants were illiterate and poor sharecroppers who were forced to grow indigo. They feared the British planters because the planters had the support of the law and the government, and they could punish or evict the peasants at will."
+            },
+            {
+                type: "Long",
+                q: "Describe the hardship faced by the author in 'Journey to the End of the Earth'. What does the title signify?",
+                a: "The author, Tishani Doshi, traveled to Antarctica aboard a Russian research vessel, the 'Akademik Shokalskiy'. The journey involved crossing nine time zones, six checkpoints, three bodies of water, and at least as many ecospheres.\n\nThe title signifies a journey to the coldest, driest, and windiest continent in the world, which is physically located at the 'end' of the earth (the South Pole). Metaphorically, it also refers to a place that holds the secrets of the earth's past, present, and future, warning us about the end of the earth if global warming continues."
+            },
+            {
+                type: "Short",
+                q: "What is the 'sadness' that the poet refers to in the poem 'Keeping Quiet'?",
+                a: "The sadness refers to the tragedy of human beings who never understand themselves. In their mad rush to achieve things, they threaten themselves with death and destruction, never pausing to appreciate life."
+            },
+            {
+                type: "Long",
+                q: "Analyze the central theme of 'A Thing of Beauty' by John Keats.",
+                a: "The central theme is that beauty is a constant source of joy and healing. A beautiful thing—whether it is nature, a story, or a noble deed—never passes into nothingness. Its loveliness increases with time.\n\nKeats suggests that life is full of trials, gloom, and unhealthy ways. In such a world, beautiful things act as a 'bower' or a shady place that gives us peace and sleep. They remove the pall of despondence from our dark spirits and bind us to the earth, giving us a reason to live."
+            },
+            {
+                type: "Short",
+                q: "Who was Carter? What did he do to King Tut’s mummy?",
+                a: "Howard Carter was the British archaeologist who discovered King Tut’s tomb in 1922. To separate the mummy from the solid gold coffin where the ritual resins had hardened, he had to chisel away the solidified material, damaging the mummy in the process."
             },
              {
-                q: "Analyze the relationship between the mother and the daughter in the poem 'My Mother at Sixty-six'. How does the poet convey her complex emotions?",
-                a: "Kamala Das’s poem 'My Mother at Sixty-six' is a poignant exploration of the mother-daughter bond, aged by time and the fear of loss. The poem captures a specific moment when the poet is driving her mother to the airport. Seeing her mother dozing open-mouthed, with a face 'ashen like that of a corpse', the poet is struck by the sudden realization of her mother's mortality.\n\nThe poet conveys her complex emotions through contrasting imagery. The image of the aging mother inside the car is contrasted with the 'young trees sprinting' and the 'merry children spilling out' outside. This juxtaposition highlights the vitality of life versus the inevitability of decay and death. The energy outside emphasizes the stillness and frailty inside the car.\n\nThe poet’s childhood fear—the fear of separation and losing her mother—returns to haunt her. However, she hides these intense feelings behind a facade of normalcy. Her parting words, 'See you soon, Amma', and her prolonged smile are an attempt to reassure her mother and, perhaps more importantly, herself.\n\nThe poem does not have a rhyme scheme, reflecting the stream of consciousness and the chaotic nature of the poet's thoughts. It captures the universal ache of watching a parent age, the guilt of leaving them behind, and the helplessness one feels in the face of time."
+                type: "Long",
+                q: "Character sketch of Frank in 'The Browning Version'.",
+                a: "Frank is a young science teacher at the school. Unlike Mr. Crocker-Harris, he is approachable but lacks professional ethics. He is envious of the hold Crocker-Harris has over the students, despite the latter being strict and not a sadist.\n\nFrank encourages Taplow to speak against his teacher and even mocks the classic literature (Aeschylus) he teaches. He represents the modern, perhaps more lax, teacher who tries to be friendly with students but fails to command the deep respect that a disciplinarian like Crocker-Harris commands."
             },
             {
-                q: "How does the story 'The Third Level' interweave reality and fantasy? What does the Third Level symbolize for Charley?",
-                a: "Jack Finney’s 'The Third Level' is a psychological story that blurs the lines between reality and fantasy. The protagonist, Charley, claims to have found a 'Third Level' at the Grand Central Station in New York, even though the station presidents and timetables confirm there are only two. This Third Level is described vividly as a place from the year 1894, with open-flame gaslights, old-fashioned locomotives, and people dressed in 19th-century attire.\n\nThe story weaves these elements so convincingly that the reader, like Charley, is momentarily transported. However, the logical explanation provided by Charley’s psychiatrist friend, Sam, is that the Third Level is a 'waking dream wish fulfillment'. It is an escape mechanism for Charley, who wants to flee from the insecurity, fear, war, and worry of the modern world.\n\nFor Charley, the 1890s represent a peaceful, idyllic time before the World Wars, a time of leisure and romance. The Third Level symbolizes a refuge, a psychological haven where one can escape the harsh realities of the present. The twist at the end, where Sam himself supposedly travels to 1894, leaves the ending ambiguous—is it real, or has the delusion spread?\n\nUltimately, the story suggests that the human mind often seeks an escape route when reality becomes too overwhelming. The Third Level is the physical manifestation of the human desire for peace and a simpler past."
+                type: "Short",
+                q: "Why did the author's grandmother feed the sparrows?",
+                a: "In the city, there were no stray dogs to feed, so the grandmother took to feeding sparrows. It was her way of connecting with nature and practicing charity, which gave her immense happiness."
+            },
+            {
+                type: "Long",
+                q: "How does the story 'The Address' describe the human predicament that follows war?",
+                a: "Marga Minco’s story highlights the emotional trauma of war survivors. The narrator returns to her hometown after the war to claim her mother's belongings from Mrs. Dorling. However, seeing her precious family possessions in a strange, tasteless environment distresses her.\n\nThe objects, which were once connected to a life of love and comfort, now evoke painful memories of her dead mother and the past. She realizes that reclaiming the objects will not bring back the past. The story shows that war not only destroys physical lives but also severs emotional connections, leaving survivors with a sense of displacement."
             }
         ];
 
-        // Function to shuffle array (Fisher-Yates) for randomness
-        function shuffle(array) {
-            let currentIndex = array.length,  randomIndex;
-            while (currentIndex != 0) {
-                randomIndex = Math.floor(Math.random() * currentIndex);
-                currentIndex--;
-                [array[currentIndex], array[randomIndex]] = [
-                array[randomIndex], array[currentIndex]];
-            }
-            return array;
-        }
+        // Function to create the full list of 100
+        function loadQuestions() {
+            const container = document.getElementById('content-area');
+            let totalNeeded = 100;
+            let currentIndex = 0;
 
-        // Function to generate 100 questions
-        function generateQuestions() {
-            const container = document.getElementById('questions-container');
-            const totalQuestionsNeeded = 100;
-            
-            // We will loop through our high-quality database to reach 100
-            // First, let's shuffle the base questions so the order is random each time
-            let baseQuestions = shuffle([...questionBank]); 
-            
-            for (let i = 1; i <= totalQuestionsNeeded; i++) {
-                // Get a question from the bank (using modulo to loop)
-                const data = baseQuestions[(i - 1) % baseQuestions.length];
+            for (let i = 1; i <= totalNeeded; i++) {
+                // Cycle through the database
+                const data = database[currentIndex];
                 
-                // Create HTML elements
-                const qaBlock = document.createElement('div');
-                qaBlock.className = 'qa-block';
-                
-                const qHeader = document.createElement('div');
-                qHeader.className = 'question-header';
-                qHeader.innerText = `Question ${i}:`;
-                
-                const qText = document.createElement('div');
-                qText.className = 'question-text';
-                qText.innerText = data.q;
-                
-                const aText = document.createElement('div');
-                aText.className = 'answer-text';
-                aText.innerText = `Answer:\n${data.a}\n\n(Write this answer in your notebook to practice handwriting flow and consistency.)`;
-                
-                // Append to block
-                qaBlock.appendChild(qHeader);
-                qaBlock.appendChild(qText);
-                qaBlock.appendChild(aText);
-                
-                // Append block to container
-                container.appendChild(qaBlock);
+                // Create Card
+                const card = document.createElement('div');
+                card.className = 'qa-card';
+
+                // Tag Color logic
+                const tagClass = data.type === "Short" ? "short-tag" : "long-tag";
+
+                card.innerHTML = `
+                    <div class="q-num">Question ${i} <span class="type-tag ${tagClass}">${data.type} Answer</span></div>
+                    <div class="question">${data.q}</div>
+                    <div class="answer">${data.a}</div>
+                `;
+
+                container.appendChild(card);
+
+                // Increment index and loop back if needed
+                currentIndex++;
+                if (currentIndex >= database.length) {
+                    currentIndex = 0;
+                }
             }
         }
 
-        // Run the generation on load
-        window.onload = generateQuestions;
+        // Run immediately
+        loadQuestions();
     </script>
 </body>
 </html>
